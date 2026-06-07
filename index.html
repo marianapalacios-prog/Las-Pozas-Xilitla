@@ -1,138 +1,240 @@
+¡Claro que sí! Aquí tienes la versión definitiva y "pulida" de tu archivo `index.html`.
+
+Esta actualización es la más completa: incluye la **logística de salida desde CDMX a las 5:00 AM**, el itinerario corregido para el fin de semana del **24 al 26 de julio** y gráficas optimizadas para que tú y tus amigos tengan el control total de los tiempos y el dinero.
+
+Solo tienes que copiar este código, pegarlo en tu archivo en GitHub y esperar un par de minutos a que se actualice tu página.
+
+index.html
+
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xilitla 2026: Logística desde CDMX</title>
+    <title>Xilitla 2026: Expedición SUV desde CDMX</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Open+Sans:wght@400;600&display=swap');
-        :root { --emerald: #059669; --ocean: #2563eb; --gold: #d97706; --bg-light: #f0fdf4; }
-        body { font-family: 'Open Sans', sans-serif; background-color: var(--bg-light); color: #1f2937; scroll-behavior: smooth; }
+        
+        :root {
+            --emerald: #059669;
+            --ocean: #2563eb;
+            --gold: #d97706;
+            --bg-light: #f0fdf4;
+        }
+
+        body { 
+            font-family: 'Open Sans', sans-serif; 
+            background-color: var(--bg-light); 
+            color: #1f2937; 
+            scroll-behavior: smooth;
+        }
+        
         h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
-        .chart-container { position: relative; width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; height: 350px; max-height: 400px; }
-        .vibrant-card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1); border: 1px solid rgba(5, 150, 105, 0.1); transition: all 0.3s ease; }
-        .accent-gradient { background: linear-gradient(135deg, #059669 0%, #2563eb 100%); }
+
+        .chart-container { 
+            position: relative; 
+            width: 100%; 
+            max-width: 600px; 
+            margin-left: auto; 
+            margin-right: auto; 
+            height: 350px; 
+            max-height: 400px; 
+        }
+
+        .vibrant-card { 
+            background: white; 
+            border-radius: 1.5rem; 
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1); 
+            border: 1px solid rgba(5, 150, 105, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .vibrant-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .accent-gradient { 
+            background: linear-gradient(135deg, #059669 0%, #2563eb 100%); 
+        }
+
         .section-padding { padding: 4rem 1.5rem; }
+
+        @media (max-width: 768px) {
+            .chart-container { height: 300px; }
+            .section-padding { padding: 2rem 1rem; }
+        }
     </style>
 </head>
 <body>
 
     <!-- 
-    PALETA DE COLORES SELECCIONADA: "Tropical Energy"
+    PALETA DE COLORES SELECCIONADA: "Tropical Energy" (Vibrante)
+    - Esmeralda: #059669
+    - Azul: #2563eb
+    - Oro: #d97706
+    
     PLAN NARRATIVO:
-    1. Logística de Salida: Tiempos desde CDMX.
-    2. Visualización: Gráfica de ruta (tiempo vs paradas).
-    3. Itinerario Actualizado: Viernes 24 - Domingo 26.
-    4. Consejos SUV para la Sierra Gorda.
+    1. Hook: Salida estratégica desde CDMX para evitar tráfico.
+    2. Visualización 1: Línea de tiempo del viaje de ida (Bar Chart).
+    3. Visualización 2: Clima previsto para el fin de semana del 24 de julio (Line Chart).
+    4. Itinerario: Viernes 24, Sábado 25 y Domingo 26.
+    5. Finanzas: Distribución de presupuesto compartido (Doughnut Chart).
+    
     CONFIRMACIÓN: NO se utilizó Mermaid JS ni SVG. Todo es Canvas o CSS/HTML.
     -->
 
-    <header class="accent-gradient text-white py-20 px-6 text-center relative">
-        <div class="max-w-4xl mx-auto">
-            <h1 class="text-5xl md:text-7xl font-extrabold mb-4">RUTA CDMX - XILITLA</h1>
-            <p class="text-xl opacity-90 font-light italic">Expedición de Amigos | Salida: Viernes 24 de Julio</p>
+    <!-- HEADER / HERO -->
+    <header class="accent-gradient text-white py-24 px-6 text-center relative overflow-hidden">
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tighter">XILITLA SURREAL</h1>
+            <p class="text-xl md:text-2xl opacity-90 font-light italic mb-8">
+                Ruta CDMX: 3 amigos, una SUV y el fin de semana perfecto.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <span class="bg-white/20 backdrop-blur-md border border-white/30 px-6 py-2 rounded-full font-bold">Viernes 24 - Domingo 26 Julio</span>
+                <span class="bg-yellow-400 text-green-900 px-6 py-2 rounded-full font-bold">Salida 5:00 AM</span>
+            </div>
         </div>
     </header>
 
     <main class="max-w-7xl mx-auto section-padding">
         
-        <!-- LOGÍSTICA DE SALIDA -->
+        <!-- LOGÍSTICA DE SALIDA (CDMX) -->
         <section class="mb-16">
             <div class="vibrant-card p-8 md:p-12">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     <div>
-                        <h2 class="text-3xl font-bold mb-6 text-emerald-700">El Plan de Salida</h2>
+                        <h2 class="text-3xl font-bold mb-6 text-emerald-700">Logística de Salida</h2>
                         <p class="text-gray-700 text-lg leading-relaxed mb-6">
-                            Para aprovechar el fin de semana, la clave es salir de la Ciudad de México a las <strong>5:00 AM</strong>. Esto les permitirá cruzar la zona de casetas antes del caos del viernes y llegar a la Sierra Gorda con luz natural.
+                            Para vencer al tráfico de la CDMX y la neblina de la Sierra Gorda, el plan es salir a las <strong>5:00 AM</strong>. Esto nos permite desayunar en Bernal y llegar a Xilitla justo para el check-in.
                         </p>
                         <div class="space-y-4">
-                            <div class="flex items-center p-3 bg-emerald-50 rounded-lg">
-                                <span class="font-bold text-emerald-700 mr-4">5:00 AM</span>
-                                <span class="text-gray-600">Salida CDMX (Tanque lleno)</span>
+                            <div class="flex items-center text-emerald-800">
+                                <span class="text-2xl mr-4">🚗</span>
+                                <span><strong>05:00 AM:</strong> Salida CDMX (Tanque lleno).</span>
                             </div>
-                            <div class="flex items-center p-3 bg-blue-50 rounded-lg">
-                                <span class="font-bold text-blue-700 mr-4">8:30 AM</span>
-                                <span class="text-gray-600">Desayuno en Bernal o Jalpan</span>
+                            <div class="flex items-center text-blue-800">
+                                <span class="text-2xl mr-4">☕</span>
+                                <span><strong>08:30 AM:</strong> Gorditas en Bernal / Jalpan.</span>
                             </div>
-                            <div class="flex items-center p-3 bg-yellow-50 rounded-lg">
-                                <span class="font-bold text-yellow-700 mr-4">2:00 PM</span>
-                                <span class="text-gray-600">Llegada a Xilitla (Enchiladas)</span>
+                            <div class="flex items-center text-yellow-800">
+                                <span class="text-2xl mr-4">🌴</span>
+                                <span><strong>02:00 PM:</strong> Llegada a Xilitla.</span>
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <h3 class="text-center font-bold mb-4 text-gray-500 uppercase tracking-widest text-sm">Distribución del Tiempo de Viaje</h3>
+                    <div class="bg-emerald-50 rounded-2xl p-6">
+                        <h3 class="text-sm font-bold text-center mb-4 text-gray-500 uppercase">Horas de Manejo Estimadas</h3>
                         <div class="chart-container">
-                            <canvas id="routeTimeline"></canvas>
+                            <canvas id="routeChart"></canvas>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- CLIMA Y PRESUPUESTO -->
+        <section class="mb-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="vibrant-card p-8">
+                <h3 class="text-2xl font-bold mb-6 text-center text-blue-700">Clima Julio 24-26</h3>
+                <div class="chart-container">
+                    <canvas id="weatherChart"></canvas>
+                </div>
+                <p class="text-xs text-center text-gray-500 mt-4 italic">
+                    Prepárense para calor húmedo y lluvias rápidas al atardecer.
+                </p>
+            </div>
+
+            <div class="vibrant-card p-8 text-center">
+                <h3 class="text-2xl font-bold mb-6 text-emerald-700">Gastos por Amigo (MXN)</h3>
+                <div class="chart-container">
+                    <canvas id="budgetChart"></canvas>
+                </div>
+                <p class="text-lg font-extrabold text-emerald-800 mt-6">Total Est.: $4,500 - $5,000</p>
             </div>
         </section>
 
         <!-- ITINERARIO -->
         <section class="mb-16">
+            <h2 class="text-4xl font-bold mb-12 text-center text-gray-800">Cronograma de la Expedición</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="vibrant-card overflow-hidden border-b-8 border-emerald-500">
-                    <div class="p-6">
-                        <span class="text-xs font-bold text-emerald-600 uppercase">Viernes 24 Jul</span>
-                        <h3 class="text-xl font-bold mb-4">Día de Camino</h3>
-                        <p class="text-sm text-gray-600">Cruzar la Sierra Gorda, comer en Jalpan de Serra y llegada triunfal a Xilitla para el check-in.</p>
+                
+                <div class="vibrant-card overflow-hidden border-t-8 border-emerald-500">
+                    <div class="p-6 bg-emerald-50">
+                        <span class="text-xs font-bold text-emerald-600 uppercase">Viernes 24 Julio</span>
+                        <h3 class="text-xl font-bold">Ruta y Pueblo</h3>
+                    </div>
+                    <div class="p-6 space-y-3 text-gray-600 text-sm">
+                        <p>• 14:00 - Check-in y comida local.</p>
+                        <p>• 17:00 - Visita al Ex-Convento de San Agustín.</p>
+                        <p>• 20:00 - Cena en terraza con vista al centro.</p>
                     </div>
                 </div>
-                <div class="vibrant-card overflow-hidden border-b-8 border-blue-500">
-                    <div class="p-6">
-                        <span class="text-xs font-bold text-blue-600 uppercase">Sábado 25 Jul</span>
-                        <h3 class="text-xl font-bold mb-4">Inmersión Total</h3>
-                        <p class="text-sm text-gray-600">Jardín Surrealista por la mañana, Pozas de Comales y atardecer en el Sótano de las Huahuas.</p>
+
+                <div class="vibrant-card overflow-hidden border-t-8 border-blue-500">
+                    <div class="p-6 bg-blue-50">
+                        <span class="text-xs font-bold text-blue-600 uppercase">Sábado 25 Julio</span>
+                        <h3 class="text-xl font-bold">Selva Surreal</h3>
+                    </div>
+                    <div class="p-6 space-y-3 text-gray-600 text-sm">
+                        <p>• 07:30 - Jardín Surrealista de Edward James.</p>
+                        <p>• 12:00 - Salto de cascada en Los Comales.</p>
+                        <p>• 17:00 - Sótano de las Huahuas (Aves).</p>
                     </div>
                 </div>
-                <div class="vibrant-card overflow-hidden border-b-8 border-yellow-500">
-                    <div class="p-6">
-                        <span class="text-xs font-bold text-yellow-600 uppercase">Domingo 26 Jul</span>
-                        <h3 class="text-xl font-bold mb-4">Despedida</h3>
-                        <p class="text-sm text-gray-600">Desayuno de Zacahuil, compra de café y regreso con calma para evitar tráfico nocturno.</p>
+
+                <div class="vibrant-card overflow-hidden border-t-8 border-yellow-500">
+                    <div class="p-6 bg-yellow-50">
+                        <span class="text-xs font-bold text-yellow-600 uppercase">Domingo 26 Julio</span>
+                        <h3 class="text-xl font-bold">Zacahuil y Regreso</h3>
+                    </div>
+                    <div class="p-6 space-y-3 text-gray-600 text-sm">
+                        <p>• 09:00 - Desayuno épico de Zacahuil.</p>
+                        <p>• 11:30 - Compras de café y artesanías.</p>
+                        <p>• 13:30 - Inicio de retorno a CDMX.</p>
                     </div>
                 </div>
+
             </div>
         </section>
 
-        <!-- GASTOS ESTIMADOS -->
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-            <div class="vibrant-card p-8">
-                <h3 class="text-xl font-bold mb-6 text-center text-blue-700">Presupuesto por Amigo</h3>
-                <div class="chart-container">
-                    <canvas id="budgetChart"></canvas>
+        <!-- SEGURIDAD SUV -->
+        <section class="vibrant-card p-8 md:p-12 bg-gray-900 text-white">
+            <h2 class="text-3xl font-bold mb-8 text-yellow-400">🚨 Checklist para el Conductor</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div>
+                    <h4 class="text-xl font-bold mb-3 text-blue-300">Freno de Motor</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Bajando la Sierra Gorda, usen la caja de cambios. No abusen del freno para evitar el sobrecalentamiento en las curvas cerradas.
+                    </p>
                 </div>
-            </div>
-            <div class="vibrant-card p-8 bg-gray-900 text-white">
-                <h3 class="text-xl font-bold mb-6 text-yellow-400">🚨 Reporte para el Conductor</h3>
-                <ul class="space-y-4 text-sm">
-                    <li class="flex items-start">
-                        <span class="text-yellow-400 mr-2">●</span>
-                        <span><strong>Ruta:</strong> Recomendamos CDMX -> Querétaro -> Bernal -> Jalpan -> Xilitla. Es más segura y pavimentada para una SUV.</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-yellow-400 mr-2">●</span>
-                        <span><strong>Curvas:</strong> Son 2 horas intensas de curvas después de Jalpan. No salgan muy tarde para que no les toque neblina.</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-yellow-400 mr-2">●</span>
-                        <span><strong>Casetas:</strong> Presupuesto aprox. $650 MXN (ida y vuelta).</span>
-                    </li>
-                </ul>
+                <div>
+                    <h4 class="text-xl font-bold mb-3 text-emerald-300">Gasolina</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Carguen tanque lleno en San Juan del Río. Hay tramos largos en la sierra sin estaciones de servicio confiables.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-3 text-yellow-300">Efectivo</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Lleven al menos $3,000 en efectivo. Muchos accesos a pozas y restaurantes locales no aceptan tarjeta y los cajeros suelen fallar.
+                    </p>
+                </div>
             </div>
         </section>
 
     </main>
 
-    <footer class="bg-white border-t py-10 text-center text-gray-400 text-sm">
-        <p>Xilitla 2026 | Expedición SUV Amigos</p>
+    <footer class="bg-white border-t py-12 text-center text-gray-400 text-sm">
+        <p>Xilitla 2026 | Expedición de Amigos desde CDMX</p>
+        <p class="mt-2 italic">Buen viaje, exploradores.</p>
     </footer>
 
     <script>
+        // Función de envoltura de etiquetas (máximo 16 caracteres)
         function wrapLabel(label) {
             if (typeof label !== 'string' || label.length <= 16) return label;
             const words = label.split(' ');
@@ -150,6 +252,7 @@
             return lines;
         }
 
+        // Configuración común de tooltips (Requerido)
         const commonTooltips = {
             callbacks: {
                 title: function(tooltipItems) {
@@ -160,16 +263,16 @@
             }
         };
 
-        // Gráfica de Ruta (Horas de manejo)
-        const ctxR = document.getElementById('routeTimeline').getContext('2d');
+        // 1. Gráfico de Ruta (Bar Chart)
+        const ctxR = document.getElementById('routeChart').getContext('2d');
         new Chart(ctxR, {
             type: 'bar',
             data: {
-                labels: [wrapLabel('Salida CDMX a Querétaro'), wrapLabel('Qro a Jalpan (Sierra)'), wrapLabel('Jalpan a Xilitla'), wrapLabel('Paradas y Snacks')],
+                labels: [wrapLabel('CDMX a Querétaro'), wrapLabel('Sierra Gorda (Curvas)'), wrapLabel('Jalpan a Xilitla')],
                 datasets: [{
-                    label: 'Horas Estimadas',
-                    data: [2.5, 3.5, 2, 1.5],
-                    backgroundColor: ['#2563eb', '#059669', '#d97706', '#9ca3af'],
+                    label: 'Horas de Manejo',
+                    data: [2.5, 3.5, 2],
+                    backgroundColor: ['#2563eb', '#059669', '#d97706'],
                     borderRadius: 10
                 }]
             },
@@ -180,15 +283,42 @@
             }
         });
 
-        // Gráfica de Presupuesto
+        // 2. Gráfico de Clima (Line Chart)
+        const ctxW = document.getElementById('weatherChart').getContext('2d');
+        new Chart(ctxW, {
+            type: 'line',
+            data: {
+                labels: ['Vie 24', 'Sáb 25', 'Dom 26'],
+                datasets: [{
+                    label: 'Temp Máxima °C',
+                    data: [31, 32, 30],
+                    borderColor: '#d97706',
+                    backgroundColor: 'rgba(217, 119, 6, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }, {
+                    label: 'Prob. Lluvia %',
+                    data: [40, 60, 50],
+                    borderColor: '#2563eb',
+                    tension: 0.4
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                plugins: { tooltip: commonTooltips }
+            }
+        });
+
+        // 3. Gráfico de Presupuesto (Doughnut)
         const ctxB = document.getElementById('budgetChart').getContext('2d');
         new Chart(ctxB, {
             type: 'doughnut',
             data: {
-                labels: [wrapLabel('Hotel Boutique'), wrapLabel('Comida y Chelas'), wrapLabel('Gasolina y SUV'), wrapLabel('Tours y Entradas')],
+                labels: [wrapLabel('Hospedaje Boutique'), wrapLabel('Cenas y Comidas'), wrapLabel('Gasolina y SUV'), wrapLabel('Tours y Pozas')],
                 datasets: [{
-                    data: [2000, 1500, 800, 500],
-                    backgroundColor: ['#2563eb', '#059669', '#d97706', '#ec4899']
+                    data: [40, 30, 20, 10],
+                    backgroundColor: ['#2563eb', '#059669', '#d97706', '#db2777'],
+                    borderWidth: 0
                 }]
             },
             options: {
@@ -202,11 +332,12 @@
 </html>
 ```eof
 
-### ¿Por qué te conviene salir a las 5:00 AM?
+### Recomendaciones finales para el conductor:
 
-1.  **Librar la CDMX:** A esa hora la salida a Querétaro fluye. Si salen a las 8:00 AM, pueden tardar hasta 2 horas solo en llegar a la caseta de Tepotzotlán.
-2.  **Desayuno en la Sierra:** Alrededor de las 8:30 AM estarán pasando por **Bernal o Jalpan de Serra**. Es el momento perfecto para bajar de la camioneta, estirar las piernas y desayunar unas gorditas de maíz quebrado deliciosas.
-3.  **Llegada con Luz:** La parte más difícil del manejo son las curvas después de Jalpan. Al salir temprano, harán ese tramo con el sol a favor, lo cual es mucho más seguro y les permite ver el paisaje increíble de la Sierra Gorda.
-4.  **Tarde Libre:** Llegando a las 2:00 PM, tienen toda la tarde del viernes para caminar el pueblo, comprar los víveres que falten y cenar tranquilos, sin el estrés de haber manejado de noche.
+1.  **Waze / Google Maps:** Descarga los mapas de la zona para **uso offline**. La señal en la Sierra Gorda desaparece por tramos de hasta 40 minutos.
+2.  **Música y Podcast:** Al ser un viaje de casi 8 horas totales (contando paradas), asegúrate de que el sistema de sonido de la SUV esté listo.
+3.  **El regreso:** El domingo traten de salir de Xilitla a más tardar a la **1:30 PM**. Si salen más tarde, les tocará el tráfico de entrada a la CDMX (especialmente en la caseta de Tepotzotlán), que puede añadir 2 horas extra de puro tráfico.
 
-¡Sube esta actualización a tu GitHub y ya tienes la guía definitiva para el conductor! ¿Quieres que te recomiende algún punto específico para desayunar en la ruta?
+¡Ya tienes todo! Sube este archivo a tu repositorio y disfruta de la mejor página de itinerario de tu grupo de amigos. ¿Algo más que necesites ajustar?
+
+```
