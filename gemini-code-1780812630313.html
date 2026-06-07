@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xilitla 2026: Expedición de Amigos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Open+Sans:wght@400;600&display=swap');
+        
+        :root {
+            --emerald: #059669;
+            --ocean: #2563eb;
+            --gold: #d97706;
+            --bg-light: #f0fdf4;
+        }
+
+        body { 
+            font-family: 'Open Sans', sans-serif; 
+            background-color: var(--bg-light); 
+            color: #1f2937; 
+            scroll-behavior: smooth;
+        }
+        
+        h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
+
+        .chart-container { 
+            position: relative; 
+            width: 100%; 
+            max-width: 600px; 
+            margin-left: auto; 
+            margin-right: auto; 
+            height: 350px; 
+            max-height: 400px; 
+        }
+
+        .vibrant-card { 
+            background: white; 
+            border-radius: 1.5rem; 
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1); 
+            border: 1px solid rgba(5, 150, 105, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .accent-gradient { 
+            background: linear-gradient(135deg, #059669 0%, #2563eb 100%); 
+        }
+
+        .section-padding { padding: 4rem 1.5rem; }
+
+        @media (max-width: 768px) {
+            .chart-container { height: 300px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 
+    PALETA DE COLORES SELECCIONADA: "Tropical Energy"
+    - Esmeralda Selva: #059669
+    - Azul Cascada: #2563eb
+    - Oro Solar: #d97706
+    - Fondo: #f0fdf4
+    
+    PLAN NARRATIVO:
+    1. Hook: Expedición de amigos en SUV.
+    2. Datos Técnicos: Clima y pronóstico para el fin de semana del 24 de julio.
+    3. Finanzas: Desglose de gastos compartidos para 3 personas.
+    4. Logística: Itinerario corregido (Viernes 24 - Domingo 26).
+    5. Seguridad: Consejos para la camioneta en la Sierra Gorda.
+    
+    VISUALIZACIONES:
+    - Clima: Bar Chart (Chart.js)
+    - Presupuesto: Horizontal Bar Chart (Chart.js)
+    - Distribución: Doughnut (Chart.js)
+    
+    CONFIRMACIÓN: NO se utilizó Mermaid JS ni SVG. Todo es Canvas o CSS/HTML.
+    -->
+
+    <header class="accent-gradient text-white py-24 px-6 text-center relative overflow-hidden">
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tighter">XILITLA 2026</h1>
+            <p class="text-xl md:text-2xl opacity-90 font-light italic mb-8">
+                Tres amigos, una SUV y el corazón de la Huasteca Potosina.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 text-sm">
+                <span class="bg-white/20 backdrop-blur-md border border-white/30 px-6 py-2 rounded-full font-bold">Viernes 24 - Domingo 26 de Julio</span>
+                <span class="bg-yellow-400 text-green-900 px-6 py-2 rounded-full font-bold">Sin Mascotas</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto section-padding">
+        
+        <!-- RESUMEN CLIMÁTICO -->
+        <section class="mb-16">
+            <div class="vibrant-card p-8 md:p-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl font-bold mb-6 text-emerald-700">Pronóstico de Expedición</h2>
+                        <p class="text-gray-700 text-lg leading-relaxed mb-6">
+                            Viajar el último fin de semana de julio garantiza ríos con caudal máximo. Al ser solo tres adultos en la camioneta, la movilidad en las curvas de la Sierra Gorda será óptima. Prepárense para calor tropical y lluvias rápidas que limpian la selva.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-emerald-50 p-4 rounded-xl">
+                                <p class="text-xs uppercase text-emerald-600 font-bold">Temp. Max</p>
+                                <p class="text-2xl font-bold text-emerald-900">32°C</p>
+                            </div>
+                            <div class="bg-blue-50 p-4 rounded-xl">
+                                <p class="text-xs uppercase text-blue-600 font-bold">Humedad</p>
+                                <p class="text-2xl font-bold text-blue-900">85%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="chart-container">
+                            <canvas id="weatherChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRESUPUESTO COMPARTIDO -->
+        <section class="mb-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="vibrant-card p-8">
+                <h3 class="text-2xl font-bold mb-6 text-blue-700">Costos por Explorador</h3>
+                <div class="chart-container">
+                    <canvas id="tierChart"></canvas>
+                </div>
+            </div>
+            <div class="vibrant-card p-8">
+                <h3 class="text-2xl font-bold mb-6 text-emerald-700">Desglose de Gastos SUV</h3>
+                <div class="chart-container">
+                    <canvas id="expenseChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- ITINERARIO CORREGIDO -->
+        <section class="mb-16">
+            <h2 class="text-4xl font-bold mb-12 text-center text-gray-800">Hoja de Ruta: 72 Horas</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <div class="vibrant-card overflow-hidden">
+                    <div class="bg-emerald-600 text-white p-6">
+                        <span class="text-sm font-bold opacity-80 uppercase">Viernes 24</span>
+                        <h3 class="text-2xl font-bold">Llegada al Pueblo</h3>
+                    </div>
+                    <div class="p-6 space-y-4 text-gray-700">
+                        <p><strong>14:00</strong> Check-in en Hotel Boutique.</p>
+                        <p><strong>16:00</strong> Comida de bienvenida (Enchiladas Huastecas).</p>
+                        <p><strong>18:30</strong> Caminata por el Ex-Convento de San Agustín.</p>
+                        <p><strong>21:00</strong> Cena en terraza y plan de ruta para el sábado.</p>
+                    </div>
+                </div>
+
+                <div class="vibrant-card overflow-hidden border-t-8 border-blue-500">
+                    <div class="bg-blue-600 text-white p-6">
+                        <span class="text-sm font-bold opacity-80 uppercase">Sábado 25</span>
+                        <h3 class="text-2xl font-bold">Día de Selva</h3>
+                    </div>
+                    <div class="p-6 space-y-4 text-gray-700">
+                        <p><strong>07:30</strong> Entrada al Jardín Edward James (Sin filas).</p>
+                        <p><strong>12:00</strong> Nado en Cascada Los Comales.</p>
+                        <p><strong>17:00</strong> Sótano de las Huahuas (Avistamiento de aves).</p>
+                        <p><strong>20:30</strong> Noche Bohemia en el centro.</p>
+                    </div>
+                </div>
+
+                <div class="vibrant-card overflow-hidden border-t-8 border-yellow-500">
+                    <div class="bg-yellow-600 text-white p-6">
+                        <span class="text-sm font-bold opacity-80 uppercase">Domingo 26</span>
+                        <h3 class="text-2xl font-bold">Retorno Escénico</h3>
+                    </div>
+                    <div class="p-6 space-y-4 text-gray-700">
+                        <p><strong>09:00</strong> Desayuno de Zacahuil en el mercado.</p>
+                        <p><strong>11:30</strong> Compra de café y artesanías locales.</p>
+                        <p><strong>13:30</strong> Inicio de regreso por la Sierra Gorda.</p>
+                        <p><strong>20:00</strong> Llegada a destino final.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- TIPS DE SEGURIDAD SUV -->
+        <section class="vibrant-card p-8 md:p-12 bg-gray-900 text-white">
+            <h2 class="text-3xl font-bold mb-8 text-yellow-400">⚠️ Guía de Seguridad SUV</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div>
+                    <h4 class="text-xl font-bold mb-3 text-blue-300">Frenado en Sierra</h4>
+                    <p class="text-gray-400 text-sm">Usen freno de motor en las bajadas de la Sierra Gorda para evitar el sobrecalentamiento de balatas.</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-3 text-emerald-300">Reserva de Gas</h4>
+                    <p class="text-gray-400 text-sm">No dejen que el tanque baje de 1/4. Las gasolineras entre Jalpan y Xilitla son limitadas.</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-3 text-yellow-300">Cajero Automático</h4>
+                    <p class="text-gray-400 text-sm">Lleven efectivo suficiente desde su ciudad de origen; los cajeros en Xilitla suelen quedarse sin dinero en fin de semana.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-gray-200 py-12 px-6 text-center">
+        <p class="text-gray-500 font-bold mb-2 uppercase tracking-widest">Xilitla 24-26 Julio 2026</p>
+        <p class="text-gray-400 text-sm">¡Buen viaje, exploradores!</p>
+    </footer>
+
+    <script>
+        function wrapLabel(label) {
+            if (typeof label !== 'string' || label.length <= 16) return label;
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + word).length > 16) {
+                    lines.push(currentLine.trim());
+                    currentLine = word + ' ';
+                } else {
+                    currentLine += word + ' ';
+                }
+            });
+            lines.push(currentLine.trim());
+            return lines;
+        }
+
+        const commonTooltips = {
+            callbacks: {
+                title: function(tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    return Array.isArray(label) ? label.join(' ') : label;
+                }
+            }
+        };
+
+        // Clima
+        const ctxW = document.getElementById('weatherChart').getContext('2d');
+        new Chart(ctxW, {
+            type: 'bar',
+            data: {
+                labels: [wrapLabel('Mañana Fresca'), wrapLabel('Tarde Tropical'), wrapLabel('Noche de Lluvia')],
+                datasets: [{
+                    label: 'Temp °C',
+                    data: [22, 32, 24],
+                    backgroundColor: ['#059669', '#d97706', '#2563eb'],
+                    borderRadius: 12
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                plugins: { tooltip: commonTooltips, legend: { display: false } }
+            }
+        });
+
+        // Presupuesto Tiers
+        const ctxT = document.getElementById('tierChart').getContext('2d');
+        new Chart(ctxT, {
+            type: 'bar',
+            data: {
+                labels: [wrapLabel('Económico'), wrapLabel('Balanceado'), wrapLabel('Premium')],
+                datasets: [{
+                    label: 'MXN Total',
+                    data: [2900, 4800, 8200],
+                    backgroundColor: '#2563eb',
+                    borderRadius: 5
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                maintainAspectRatio: false,
+                plugins: { tooltip: commonTooltips }
+            }
+        });
+
+        // Distribución
+        const ctxE = document.getElementById('expenseChart').getContext('2d');
+        new Chart(ctxE, {
+            type: 'doughnut',
+            data: {
+                labels: [wrapLabel('Hotel y Cabaña'), wrapLabel('Cenas y Bebidas'), wrapLabel('Gasolina y SUV'), wrapLabel('Tours y Pozas')],
+                datasets: [{
+                    data: [40, 30, 20, 10],
+                    backgroundColor: ['#2563eb', '#059669', '#d97706', '#db2777']
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                cutout: '70%',
+                plugins: { tooltip: commonTooltips }
+            }
+        });
+    </script>
+</body>
+</html>
+```eof
+
+### Resumen de cambios:
+1.  **Fechas Corregidas:** Ahora el itinerario marca claramente del **Viernes 24 al Domingo 26 de julio de 2026**.
+2.  **Lógica Semanal:** El plan del sábado (Día de Selva) ahora coincide con el 25 de julio, que es cuando el pueblo suele estar más vibrante.
+3.  **Gráficos Actualizados:** Se mantienen las visualizaciones para que tus amigos puedan ver de un vistazo cuánto van a gastar y qué clima esperar.
+
+¡Ya está listo para que actualices tu `index.html` en GitHub! ¿Hay algo más en lo que pueda apoyarte?
